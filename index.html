@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>中建一局名片</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@4/lib/index.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vant@4/lib/vant.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <van-nav-bar title="中建一局名片" />
+
+    <!-- 名片图片板块 -->
+    <van-cell-group inset>
+      <van-card
+        v-for="(item, index) in cards"
+        :key="index"
+        :desc="item.desc"
+        :thumb="item.thumb"
+      >
+        <template #title>{{ item.title }}</template>
+      </van-card>
+    </van-cell-group>
+
+    <!-- 视频板块 -->
+    <div style="padding: 16px">
+      <video
+        controls
+        style="width: 100%; border-radius: 10px"
+        poster="https://via.placeholder.com/300x180.png?text=Video+Thumbnail"
+      >
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+        您的浏览器不支持 video 标签。
+      </video>
+    </div>
+
+    <!-- 二维码板块 -->
+    <div style="text-align: center; padding: 16px">
+      <img
+        src="https://via.placeholder.com/200x200.png?text=QR+Code"
+        alt="二维码"
+        style="width: 60%; max-width: 300px"
+      />
+      <p>长按或扫描添加企业微信</p>
+    </div>
+
+    <!-- 按钮栏 -->
+    <van-row gutter="10" style="padding: 16px">
+      <van-col span="8">
+        <van-button type="primary" block>分享名片</van-button>
+      </van-col>
+      <van-col span="8">
+        <van-button type="success" block>English</van-button>
+      </van-col>
+      <van-col span="8">
+        <van-button type="primary" block>存入通讯录</van-button>
+      </van-col>
+    </van-row>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+    const app = createApp({
+      data() {
+        return {
+          cards: [
+            {
+              title: '设计研发',
+              desc: '描述信息一',
+              thumb: 'https://via.placeholder.com/80.png?text=图1'
+            },
+            {
+              title: '投资运营',
+              desc: '描述信息二',
+              thumb: 'https://via.placeholder.com/80.png?text=图2'
+            },
+            {
+              title: '工程建设',
+              desc: '描述信息三',
+              thumb: 'https://via.placeholder.com/80.png?text=图3'
+            }
+          ]
+        }
+      }
+    });
+    app.use(vant);
+    app.mount('#app');
+  </script>
+</body>
+</html>
